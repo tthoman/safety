@@ -1,0 +1,15 @@
+Package: safety
+Title: System Safety Risk Assessments
+Version: 0.0.9
+Authors@R: 
+    person("Taylor", "Thoman", , "thomant@tcd.ie", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Provides functions to assist with system safety risk assessment. Starts with one function to create a risk matrix. Future functions to expand on system safety risk assessment. 
+Imports: ggplot2, plotly, dplyr
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Depends: 
+    R (>= 2.10)
+LazyData: true
