@@ -8,10 +8,10 @@ riskmatrix(risk)
 }
 \arguments{
 \item{risk}{A dataframe describing the failure conditions. Column names should
-be: c("ID", "Title", "Risk", "Type","Severity.Name","Severity", "Probability").}
+be: c("ID", "Title", "Risk", "Type","Severity.Name","Severity", "Probability")}
 }
 \value{
-A list of two objects: "risk_plot" and "data".
+An interactive risk matrix called "risk_plot"
 \item{risk_plot}{A risk matrix plot visualizing the risk of the hazard dataframe}
 }
 \description{
