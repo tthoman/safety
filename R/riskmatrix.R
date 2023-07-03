@@ -54,7 +54,7 @@ riskmatrix <- function(risk) {
     ggplot2::geom_vline(xintercept = seq(1.5,5.5), color = "white")+
     ggplot2::ggtitle("Interactive Risk Matrix")+
     ggplot2::theme(legend.position="bottom")+
-    ggplot2::guides(color=ggplot2::guide_legend(title="Selected Plants"))+
+    ggplot2::guides(color=ggplot2::guide_legend(title="Hazard Type"))+
     ggplot2::geom_jitter(data = risk,
                          inherit.aes = FALSE, width= 0.3 ,height = 0.3,
                          ggplot2::aes(label = ID,
