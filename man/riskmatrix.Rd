@@ -8,7 +8,7 @@ riskmatrix(risk)
 }
 \arguments{
 \item{risk}{A dataframe describing the failure conditions. Column names should
-be: c("ID", "Title", "Risk", "Type","Severity.Name","Severity", "Probability")}
+be: c("ID", "Title", "RiskLevel", "Type","SeverityName","Severity", "Probability")}
 }
 \value{
 An interactive risk matrix called "risk_plot"
@@ -24,7 +24,7 @@ green represents the lowest risk. When hovered over, each block and hazard
 will display a text box explaining the risk parameters.
 }
 \examples{
-risk <- risk_demo_data
+risk <- safety::risk_demo_data
 riskmatrix(risk)
 
 }

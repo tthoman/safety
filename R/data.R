@@ -7,7 +7,7 @@
 #' \describe{
 #'   \item{ID}{ID is the hazard ID}
 #'   \item{Title}{Title is the hazard title}
-#'   \item{Risk}{Risk is the risk level}
+#'   \item{RiskLevel}{RiskLevel is the risk level}
 #'   \item{Type}{Type is the type of hazard}
 #'   \item{SeverityName}{SeverityName is the severity category}
 #'   \item{Severity}{Severity is the number associated with the severity category}
