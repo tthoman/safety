@@ -1,0 +1,141 @@
+---
+title: "safety-vignette"
+author: "Taylor Thoman"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{safety-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(safety)
+```
+
+
+# Introduction
+
+The safety package provides functions to assist with system safety risk assessment. This package starts with one function to create a risk matrix. Future functions may be built to expand on system safety risk assessment. 
+
+The riskmatrix() function generates an interactive risk matrix plot modeled after published industry standard risk matrices. The function accepts risk data and then plots each data point within in its respective risk category on the matrix. Each block and data point on the matrix has a text box of risk details that appears when hovered over. 
+
+# Installation and Setup
+
+To install this package:
+
+You must install the safety library once on your local machine:
+```{r, eval=FALSE}
+# From CRAN
+install.packages("safety")
+
+# From GitHub
+devtools::install_github("tthoman/safety")
+```
+
+And then load it in every session you want to use it:
+```{r, eval=FALSE}
+library(safety)
+```
+
+# riskmatrix() function
+
+The riskmatrix() function code is broken into two segments: risk category calculation and risk matrix plot. 
+
+A risk matrix is a grid plot of risk categories. The dimensions of risk are: severity of outcome (along the x axis) and probability of occurrence (along the y axis). Following the standardized matrices published and utilized by the aerospace and automotive industries [MIL-STD-882E, SAE-ARP-4761], the most severe risk lies at the top left of the risk matrix plot and the least severe risk lies at the bottom right of the risk matrix plot. 
+
+Severity of Outcome levels are defined as [MIL-STD-882E / SAE-ARP-4761*]:
+1 - Catastrophic / Catastrophic
+2 - Critical / Hazardous
+3 - Marginal / Major
+4 - Negligible / Minor 
+5 - No Safety Impact / No Effect
+* The military and civil standards have slightly different language regarding severity, both are provided above
+
+Probability of Occurrence levels are defined as*:
+1 - A: Frequent
+2 - B: Probable
+3 - C: Occasional
+4 - D: Remote
+5 - E: Improbable
+* Typically, probability is defined with letters A-E to distinguish probability from the severity attribute. Here, numbers must be used to facilitate necessary risk category calculations for plotting purposes.
+
+To plot the highest risk at the top right, the severity axis is plotted normally (1-5) and the probability axis is reversed (5-1) like so:
+
+
+  1    2    3    4    5 [severity]
+1
+
+2
+
+3
+
+4
+
+5
+[probability]
+
+The risk matrix is the background for plotting hazard data. A hazard dataframe contains rows of data defining hazards. Each row represents a hazard with attributes including: hazard ID, hazard title, hazard description, worst case severity of outcome, probability of occurrence, and more. The riskmatrix() function accepts only a rigid structure of hazard dataframe with the columns: c("ID", "Title", "RiskLevel", "Type","SeverityName","Severity", "Probability").
+
+The combination of the severity dimension and the probability dimension of a hazard is called its risk acceptance code (RAC). This RAC will correspond to a certain category on the risk matrix grid where the hazard will be plotted. 
+
+Possible RACs include:
+
+1A, 1B, 1C, 1D, 1E . . . 5A, 5B, 5C, 5D, 5E 
+11, 12, 13, 14, 15 . . . 51, 52, 53, 54, 55*
+* Using numbers (1-5) in place of letters (A-E) for severity
+
+The following code performs the calculations necessary to mathematically compute the different possibilities of RAC matrix categories.  
+
+```{r, eval=FALSE}
+  # Create a heatmap background for the risk matrix
+  # Set a score in order to calculate the risk level possibilities
+  Likelihood <- rep(c(1:5),5)
+  Consequence <- rep(c(1:5),each=5)
+  Likelihood_score <- rep(c(1,2,4,6,12),5)
+  Consequence_score <- rep(c(1,2,4,6,12),each=5)
+  df <- data.frame(Likelihood,Consequence)
+  risk_score <- Consequence_score * Likelihood_score
+  Risk <- dplyr::case_when(risk_score >= 0 & risk_score < 6 ~ 1,
+                           risk_score >= 6 & risk_score < 12 ~ 2,
+                           risk_score >= 12 & risk_score < 32  ~ 3,
+                           risk_score >= 32 ~ 4)
+  df2 <- dplyr::mutate(df, Likelihood_score, Consequence_score, risk_score, Risk)
+```
+
+A sample of df2 is as follows:
+> head(df2)
+  Likelihood Consequence Likelihood_score Consequence_score risk_score Risk
+1          1           1                1                 1          1    1
+2          2           1                2                 1          2    1
+3          3           1                4                 1          4    1
+4          4           1                6                 1          6    2
+5          5           1               12                 1         12    3
+6          1           2                1                 2          2    1
+
+Computing the "Risk" for each RAC combination from 1-4 enables denoting risk level by color-coding category grids on the matrix. Risk levels are presented as follows:
+1 - High - Red
+2 - Serious - Orange
+3 - Medium - Yellow
+4 - Low - Green
+
+  1       2        3         4       5 [severity]
+1 red     red     red      orange    yellow
+
+2 red     red     orange   yellow    yellow
+
+3 red     orange  yellow   yellow    green
+
+4 orange  yellow  yellow   green     green
+
+5 yellow  yellow  green    green     green
+[probability]
+
+
+

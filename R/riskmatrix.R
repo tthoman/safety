@@ -42,7 +42,7 @@ riskmatrix <- function(risk) {
                            risk_score >= 6 & risk_score < 12 ~ 2,
                            risk_score >= 12 & risk_score < 32  ~ 3,
                            risk_score >= 32 ~ 4)
-  df2 <- dplyr::mutate(df, risk_score, Risk)
+  df2 <- dplyr::mutate(df, Likelihood_score, Consequence_score, risk_score, Risk)
 
   # Plot the provided risk data
   risk_p<- suppressWarnings(ggplot2::ggplot(df2,ggplot2::aes(x =Consequence, y =Likelihood, fill=Risk))+
