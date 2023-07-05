@@ -1,6 +1,6 @@
 Package: safety
 Title: System Safety Risk Assessment
-Version: 0.0.9
+Version: 1.0.0
 Authors@R: 
     person("Taylor", "Thoman", , "thomant@tcd.ie", role = c("aut", "cre", "cph"))
 Description: Provides a risk matrix function to assist with system safety risk assessment.
