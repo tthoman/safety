@@ -8,7 +8,8 @@ riskmatrix(risk)
 }
 \arguments{
 \item{risk}{A dataframe describing the failure conditions. Column names should
-be: c("ID", "Title", "RiskLevel", "Type","SeverityName","Severity", "Probability")}
+be: c("ID", "Title", "RiskLevel", "Type","SeverityName","Severity", "Probability").
+Severity and probability values must only be whole numbers between 1 and 5.}
 }
 \value{
 An interactive risk matrix called "risk_plot"

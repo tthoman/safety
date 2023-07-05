@@ -30,7 +30,9 @@ riskmatrix <- function(risk) {
   Severity <- NA
   Type <- NA
 
-  # Only allow values from 1-5 for severity & prob
+  # Only allow values from 1-5 for severity & prob and proper columns
+  message("If your matrix looks strange, you may not have followed the proper formatting restrictions.")
+  message("Severity and probability values must be whole numbers between 1-5.")
 
   # Create a heatmap background for the risk matrix
   # Set a score in order to calculate the risk level possibilities
