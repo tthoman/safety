@@ -10,8 +10,8 @@
 #'   \item{RiskLevel}{RiskLevel is the risk level}
 #'   \item{Type}{Type is the type of hazard}
 #'   \item{SeverityName}{SeverityName is the severity category}
-#'   \item{Severity}{Severity is the number associated with the severity category}
-#'   \item{Probability}{Probability is the number associated with the probability category}
+#'   \item{Severity}{Severity is the number associated with the severity category. ONLY whole numbers 1-5 allowed}
+#'   \item{Probability}{Probability is the number associated with the probability category. ONLY whole numbers 1-5 allowed}
 #'   }
 #' @details This data frame contains a demo dataset for the safety package.
 #'

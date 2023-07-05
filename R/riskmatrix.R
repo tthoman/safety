@@ -9,7 +9,8 @@
 #' will display a text box explaining the risk parameters.
 #'
 #' @param risk A dataframe describing the failure conditions. Column names should
-#' be: c("ID", "Title", "RiskLevel", "Type","SeverityName","Severity", "Probability")
+#' be: c("ID", "Title", "RiskLevel", "Type","SeverityName","Severity", "Probability").
+#' Severity and probability values must only be whole numbers between 1 and 5.
 #'
 #' @return An interactive risk matrix called "risk_plot"
 #'  \item{risk_plot}{A risk matrix plot visualizing the risk of the hazard dataframe}
@@ -29,6 +30,7 @@ riskmatrix <- function(risk) {
   Severity <- NA
   Type <- NA
 
+  # Only allow values from 1-5 for severity & prob
 
   # Create a heatmap background for the risk matrix
   # Set a score in order to calculate the risk level possibilities

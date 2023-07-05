@@ -48,7 +48,9 @@ library(safety)
 
 The riskmatrix() function code is broken into two segments: risk category calculation and risk matrix plot. 
 
-A risk matrix is a grid plot of risk categories. The dimensions of risk are: severity of outcome (along the x axis) and probability of occurrence (along the y axis). Following the standardized matrices published and utilized by the aerospace and automotive industries [MIL-STD-882E, SAE-ARP-4761], the most severe risk lies at the top left of the risk matrix plot and the least severe risk lies at the bottom right of the risk matrix plot. 
+A risk matrix is a grid plot of risk categories. The dimensions of risk are: severity of outcome (along the x axis) and probability of occurrence (along the y axis). 
+Following the standardized matrices published and utilized by the aerospace and automotive industries [MIL-STD-882E, SAE-ARP-4761], the most severe risk lies at the top left of the risk matrix plot and the least severe risk lies at the bottom right of the risk matrix plot.
+Only whole numbers 1-5 should be used for the severity and probability values. 
 
 Severity of Outcome levels are defined as [MIL-STD-882E / SAE-ARP-4761*]:
 1 - Catastrophic / Catastrophic
@@ -64,7 +66,8 @@ Probability of Occurrence levels are defined as*:
 3 - C: Occasional
 4 - D: Remote
 5 - E: Improbable
-* Typically, probability is defined with letters A-E to distinguish probability from the severity attribute. Here, numbers must be used to facilitate necessary risk category calculations for plotting purposes.
+* Typically, probability is defined with letters A-E to distinguish probability from the severity attribute. 
+Here, numbers must be used to facilitate necessary risk category calculations for plotting purposes.
 
 To plot the highest risk at the top right, the severity axis is plotted normally (1-5) and the probability axis is reversed (5-1) like so:
 
@@ -81,7 +84,11 @@ To plot the highest risk at the top right, the severity axis is plotted normally
 5
 [probability]
 
-The risk matrix is the background for plotting hazard data. A hazard dataframe contains rows of data defining hazards. Each row represents a hazard with attributes including: hazard ID, hazard title, hazard description, worst case severity of outcome, probability of occurrence, and more. The riskmatrix() function accepts only a rigid structure of hazard dataframe with the columns: c("ID", "Title", "RiskLevel", "Type","SeverityName","Severity", "Probability").
+The risk matrix is the background for plotting hazard data. A hazard dataframe contains rows of data defining hazards. 
+
+Each row represents a hazard with attributes including: hazard ID, hazard title, hazard description, worst case severity of outcome, probability of occurrence, and more. 
+
+The riskmatrix() function accepts only a rigid structure of hazard dataframe with the columns: c("ID", "Title", "RiskLevel", "Type","SeverityName","Severity", "Probability").
 
 The combination of the severity dimension and the probability dimension of a hazard is called its risk acceptance code (RAC). This RAC will correspond to a certain category on the risk matrix grid where the hazard will be plotted. 
 
@@ -137,5 +144,7 @@ Computing the "Risk" for each RAC combination from 1-4 enables denoting risk lev
 5 yellow  yellow  green    green     green
 [probability]
 
-
+The remainder of the code generates the plot of the interactive risk matrix.
+The background is a color coded grid matrix and the data points represent each of the hazards in the hazard database. 
+Each block and data point can be hovered over to reveal a text box of risk parameters. 
 

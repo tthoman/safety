@@ -4,7 +4,7 @@ Version: 0.0.9
 Authors@R: 
     person("Taylor", "Thoman", , "thomant@tcd.ie", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: Provides functions to assist with system safety risk assessment. Starts with one function to create a risk matrix. Future functions to expand on system safety risk assessment. 
+Description: Provides a risk matrix function to assist with system safety risk assessment.
 Imports: ggplot2, plotly, dplyr
 License: MIT + file LICENSE
 Encoding: UTF-8
