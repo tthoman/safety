@@ -96,7 +96,7 @@ Possible RACs include:
 
 1A, 1B, 1C, 1D, 1E . . . 5A, 5B, 5C, 5D, 5E 
 11, 12, 13, 14, 15 . . . 51, 52, 53, 54, 55*
-* Using numbers (1-5) in place of letters (A-E) for severity
+* Using numbers (1-5) in place of letters (A-E) for probability
 
 The following code performs the calculations necessary to mathematically compute the different possibilities of RAC matrix categories.  
 
@@ -145,6 +145,6 @@ Computing the "Risk" for each RAC combination from 1-4 enables denoting risk lev
 [probability]
 
 The remainder of the code generates the plot of the interactive risk matrix.
-The background is a color coded grid matrix and the data points represent each of the hazards in the hazard database. 
+The background is a color coded grid matrix and the data points represent the hazards in the hazard database. 
 Each block and data point can be hovered over to reveal a text box of risk parameters. 
 
