@@ -4,6 +4,12 @@ Version: 1.0.0
 Authors@R: 
     person("Taylor", "Thoman", , "thomant@tcd.ie", role = c("aut", "cre", "cph"))
 Description: Provides a risk matrix function to assist with system safety risk assessment.
+The riskmatrix() function within the safety package enables users to plot hazard data
+upon an interactive risk matrix backdrop for risk visualization. Text boxes of risk 
+parameters appear when hovered over. Visualizing the risk data enables users to thoroughly 
+understand the risk of the system and prioritize risk mitigation and prevention. 
+Risk is defined as the cross-section of worst-case severity of outcome and 
+probability of occurrence within a specified interval of time. 
 Imports: ggplot2, plotly, dplyr
 License: MIT + file LICENSE
 Encoding: UTF-8
