@@ -148,3 +148,9 @@ The remainder of the code generates the plot of the interactive risk matrix.
 The background is a color coded grid matrix and the data points represent the hazards in the hazard database. 
 Each block and data point can be hovered over to reveal a text box of risk parameters. 
 
+A few raw-script solutions for using R to create a risk matrix exist on public blogs. Chronologically, the first solution was posted by David Meza on his blog called KnowledgeR (copyright 2018). In May of 2018, R-user Ben Keen posted a risk matrix solution to his self-titled blog. In March of 2019, a blog called Neo-Reliability posted a solution referencing David Meza as inspiration. All three solutions use ggplot as the instrument for plotting. These three solutions inspired the riskmatrix() solution in the new safety package. 
+
+<https://knowledger.rbind.io/post/creating-a-risk-matrix-in-r/>
+<https://benalexkeen.com/creating-a-risk-matrix-graphic-using-r-and-ggplot2/>
+<https://www.neo-reliability.com/post/building-an-interactive-risk-matrix-using-r/>
+
